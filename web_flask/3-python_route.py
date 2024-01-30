@@ -25,6 +25,7 @@ def c_with_text(text):
     return "C {}".format(formatted_text)
 
 
+# Define the route for '/python/<text>
 @app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def python_with_text(text):
