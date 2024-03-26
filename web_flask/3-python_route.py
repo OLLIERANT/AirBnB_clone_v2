@@ -2,7 +2,6 @@
 """ Script that starts a Flask web application """
 
 from flask import Flask
-
 app = Flask(__name__)
 
 
@@ -26,13 +25,11 @@ def c_with_text(text):
 
 
 # Define the route for '/python/<text>
-@app.route('/python', defaults={"text": "is cool"}, strict_slashes=False)
-@app.route('/python/', defaults={"text": "is cool"}, strict_slashes=False)
+@app.route('/python', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
-def python_with_text(text):
-    """print python followed by the value of the text variable"""
-    formatted_text = text.replace('_', ' ')
-    return "python {}".format(formatted_text)
+def python_with_text(text='is cool'):
+    """print python followed by the value of the text """
+    return 'Python ' + text.replace('_', ' ')
 
 
 if __name__ == '__main__':
